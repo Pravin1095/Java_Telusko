@@ -1,0 +1,18 @@
+Spring is a framework and on top of that we use Spring boot
+
+Inversion of control (IOC):
+
+In spring we have an concept of IOC which is inversion of control. This means we are giving control to someone to create our objects. Here, we spring creates our objects and it stores them inside a container.
+
+Dependency Injection:
+It is a design pattern to help IOC concept
+Now as the objects are creeated now you need something to inject those objects to your application.
+Any object created by Spring framework is called beans
+
+How Dependency Injection works in our code:
+
+Let's say you are creating a class Alien in your spring framework and you want spring to create object for that class using Dependency Injection. In your main file in spring framework you have this method run SpringApplication.run(SpringdemoApplication.class, args); and if you check that inside that you will be having ConfigurableApplicationContext which is inherited from Application context. So we create an object context and assign it to the run method which returns us the application context and this is used for creating object for our class
+
+Annotation component:
+
+The objects won't be created and stored in containers for every class that we create . So to create and store an object inside the container for our class we need to have an annotation @Component at top of our class
