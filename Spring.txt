@@ -16,3 +16,7 @@ Let's say you are creating a class Alien in your spring framework and you want s
 Annotation component:
 
 The objects won't be created and stored in containers for every class that we create . So to create and store an object inside the container for our class we need to have an annotation @Component at top of our class
+
+Autowiring: 
+
+Let's say we are having another class and we need an object of that class and we use that in our Alien class. Since Alien class is dependent on Laptop here we need to use another annotation which is 
