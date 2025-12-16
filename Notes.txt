@@ -1,0 +1,29 @@
+JDK (Java development kit) , JVM (Java virtual machine) and JRE (Java runtime environment)
+
+For running java code in our system we need these 3 tools.
+JDK converts java code to byte code and this byte code will be executed inside JVM
+Sometimes we may use some inbuilt classes or libraries and we may need to use these
+codes and for this we have extra layer around the JVM which is JRE .JRE provides
+the extra files that need to run our code.
+
+So basically our code runs inside JVM and JRE provides the files that are required
+to run it. JDK is the top layer , hence when we install JDK it has the JRE and JVM.
+
+Stack and Heap:
+
+We have a main method and a class Calculator . the class calculator has a instance variable num
+and a method add.
+The main has a data variable and a reference variable obj which is creating an object for
+class Calculator
+
+Class methods:
+
+Method overloading:
+Inside a class we can define methods of same name but it should we of different parameter
+in type or size. Eg : we can have public int add(int n1, int n2) and then int add(int n1)
+This is method overloading
+
+Array :
+
+In Java , when we define an array , its size is fixed we cannot modify it. Eg : int num[] = {1, 2, 3}
+if we don'y know values define as int num[] = new int[4]
