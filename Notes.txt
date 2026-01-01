@@ -1,3 +1,7 @@
+Source code:
+
+https://github.com/navinreddy20/Javacode/blob/main/20.5%20Comparator%20vs%20Comparable.java
+
 JDK (Java development kit) , JVM (Java virtual machine) and JRE (Java runtime environment)
 
 For running java code in our system we need these 3 tools.

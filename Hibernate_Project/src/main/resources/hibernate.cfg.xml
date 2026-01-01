@@ -1,0 +1,20 @@
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/hibernateDemo</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">Prav@9184</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+<!--        The hbm2ddl creates a table when one is not found and updates the existing one-->
+
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+<!--        It is advisable to mention the dialect with what database we are using-->
+
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+<!--        The above two properties are to show the output with sql queries that hibernate is executing to save in our database-->
+
+    </session-factory>
+</hibernate-configuration>

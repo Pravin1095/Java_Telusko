@@ -60,7 +60,7 @@ public class QuestionService {
 int i=0;
     public void displayQuestions(){
         for(Questions q : questions){
-            System.out.println(q.getId());
+            System.out.println("Question no. : "+q.getId());
             System.out.println(q.getQuestion());
             System.out.println(q.getOpt1());
             System.out.println(q.getOpt2());
@@ -74,6 +74,21 @@ int i=0;
         for(String s : selection){
             System.out.println(s);
         }
+    }
+
+    public void printScore(){
+        int score = 0;
+        for(int i=0;i< questions.length;i++){
+            Questions q = questions[i];
+            String actualAnswer = q.getAnswer();
+            String userAnswer = selection[i];
+            if(actualAnswer.equals(userAnswer)){
+                score+=1;
+            }
+
+        }
+        System.out.println("Total Score : "+score);
+
     }
 }
 
