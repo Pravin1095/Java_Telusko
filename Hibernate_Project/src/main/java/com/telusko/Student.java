@@ -17,7 +17,7 @@ public class Student {
     private int sage;
 
 
-    @OneToMany(mappedBy="student") //We say student to not to map laptop because laptop already maps the student
+    @ManyToMany //We say student to not to map laptop because laptop already maps the student
     private List<Laptop> laptops;
 
     @Transient //if we want a data to be used only in our code and not in database

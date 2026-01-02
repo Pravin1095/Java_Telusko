@@ -11,12 +11,26 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] a){
 Student s1 = new Student();
+        Student s2 = new Student();
+        Student s3 = new Student();
 Laptop l1 = new Laptop();
 Laptop l2 = new Laptop();
 s1.setSage(18);
 s1.setsName("Praggnanandha");
 s1.setRollNo(4);
 s1.setRating(2720);
+
+        s2.setSage(31);
+        s2.setsName("Magnus");
+        s2.setRollNo(1);
+        s2.setRating(2886);
+
+        s3.setSage(31);
+        s3.setsName("Hikaru");
+        s3.setRollNo(2);
+        s3.setRating(2820);
+
+
 l1.setLaptopId(1);
 l1.setRam(32);
 l1.setBrand("Acer");
@@ -28,8 +42,8 @@ l1.setModel("Predator");
         l2.setModel("ThinkPad");
 
 s1.setLaptops(Arrays.asList(l1, l2));
-l1.setStudent(s1);
-l2.setStudent(s1);
+l1.setStudents(Arrays.asList(s1,s2));
+l2.setStudents(Arrays.asList(s1,s3));
 
 // Configuration is a class and we need to create object of this to use
 //it to connect to hibernate Session
@@ -51,8 +65,8 @@ l2.setStudent(s1);
 
         //Fetching data
 
-        Student s2 = null;
-        s2 = session.find(Student.class, 3);
+//        Student s2 = null;
+//        s2 = session.find(Student.class, 3);
 
 
 

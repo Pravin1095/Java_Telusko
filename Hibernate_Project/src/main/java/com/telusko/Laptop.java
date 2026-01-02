@@ -2,6 +2,8 @@ package com.telusko;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 //@Embeddable   //Embeddable makes sure that this class data is also embedded with our table
 @Entity
 public class Laptop {
@@ -12,8 +14,8 @@ public class Laptop {
     private String model;
     private int ram;
 
-    @ManyToOne
-    private Student student;
+    @ManyToMany(mappedBy = "laptops")
+    private List <Student> students;
 
     public int getLaptopId() {
         return laptopId;
@@ -47,12 +49,13 @@ public class Laptop {
         this.brand = brand;
     }
 
-    public Student getStudent() {
-        return student;
+
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     @Override
