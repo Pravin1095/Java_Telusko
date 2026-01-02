@@ -6,10 +6,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] a){
 Student s1 = new Student();
 Laptop l1 = new Laptop();
+Laptop l2 = new Laptop();
 s1.setSage(18);
 s1.setsName("Praggnanandha");
 s1.setRollNo(4);
@@ -19,7 +22,14 @@ l1.setRam(32);
 l1.setBrand("Acer");
 l1.setModel("Predator");
 
-s1.setLaptop(l1);
+        l2.setLaptopId(2);
+        l2.setRam(32);
+        l2.setBrand("Lenovo");
+        l2.setModel("ThinkPad");
+
+s1.setLaptops(Arrays.asList(l1, l2));
+l1.setStudent(s1);
+l2.setStudent(s1);
 
 // Configuration is a class and we need to create object of this to use
 //it to connect to hibernate Session
@@ -34,6 +44,7 @@ s1.setLaptop(l1);
         Transaction transaction = session.beginTransaction();
         session.persist(s1); //Persist helps to save the data in our database
         session.persist(l1);
+        session.persist(l2);
 //        session.merge(s1);  //This helps to update our database for an existing data. Also it is important to commit it.
             //Also if there isn't any data to update merge creates a data if that is not existing
 

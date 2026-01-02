@@ -3,6 +3,8 @@ package com.telusko;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity            // This annotation is required for informing hibernate that this is the class's data that we need to have in database
 @Table(name="chessGrandmasters") //This field names the table name to be chessGrandMasters
 public class Student {
@@ -15,8 +17,8 @@ public class Student {
     private int sage;
 
 
-    @OneToOne
-    private Laptop laptop;
+    @OneToMany(mappedBy="student") //We say student to not to map laptop because laptop already maps the student
+    private List<Laptop> laptops;
 
     @Transient //if we want a data to be used only in our code and not in database
     //we can use transient , this does not generate a column for this field
@@ -56,13 +58,22 @@ public class Student {
         this.rollNo = rollNo;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public List<Laptop> getLaptops() {
+        return laptops;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
     }
 
-
+    @Override
+    public String toString() {
+        return "Student{" +
+                "rollNo=" + rollNo +
+                ", sName='" + sName + '\'' +
+                ", sage=" + sage +
+                ", laptop=" + laptops +
+                ", rating=" + rating +
+                '}';
+    }
 }
