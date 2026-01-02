@@ -15,7 +15,7 @@ public class Student {
     private int sage;
 
 
-
+    @OneToOne
     private Laptop laptop;
 
     @Transient //if we want a data to be used only in our code and not in database

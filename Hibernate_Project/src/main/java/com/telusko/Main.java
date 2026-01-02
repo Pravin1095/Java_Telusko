@@ -14,6 +14,7 @@ s1.setSage(18);
 s1.setsName("Praggnanandha");
 s1.setRollNo(4);
 s1.setRating(2720);
+l1.setLaptopId(1);
 l1.setRam(32);
 l1.setBrand("Acer");
 l1.setModel("Predator");
@@ -27,11 +28,12 @@ s1.setLaptop(l1);
 //cfg.configure();
 //The above lines are replaced with the below ones
 
-        SessionFactory sf = new Configuration().addAnnotatedClass(com.telusko.Student.class).configure().buildSessionFactory(); //SessionFactory object is returned by buildSessionFactory method
+        SessionFactory sf = new Configuration().addAnnotatedClass(com.telusko.Student.class).addAnnotatedClass(com.telusko.Laptop.class).configure().buildSessionFactory(); //SessionFactory object is returned by buildSessionFactory method
         Session session = sf.openSession();
 
         Transaction transaction = session.beginTransaction();
         session.persist(s1); //Persist helps to save the data in our database
+        session.persist(l1);
 //        session.merge(s1);  //This helps to update our database for an existing data. Also it is important to commit it.
             //Also if there isn't any data to update merge creates a data if that is not existing
 
