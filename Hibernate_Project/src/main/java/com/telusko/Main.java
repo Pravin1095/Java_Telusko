@@ -7,7 +7,6 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
@@ -38,10 +37,10 @@ Laptop l2 = new Laptop();
 //l1.setBrand("Acer");
 //l1.setModel("Predator");
 //
-        l2.setLaptopId(4);
+        l2.setLaptopId(5);
         l2.setRam(24);
-        l2.setBrand("Apple");
-        l2.setModel("iPad");
+        l2.setBrand("Acer");
+        l2.setModel("Travelmate");
 //
 //s1.setLaptops(Arrays.asList(l1, l2));
 //l1.setStudents(Arrays.asList(s1,s2));
@@ -60,17 +59,28 @@ Laptop l2 = new Laptop();
         Transaction transaction = session.beginTransaction();
 //        session.persist(s1); //Persist helps to save the data in our database
 //        session.persist(l1);
-        session.persist(l2);
+//        session.persist(l2);
 //        session.merge(s1);  //This helps to update our database for an existing data. Also it is important to commit it.
             //Also if there isn't any data to update merge creates a data if that is not existing
 
         //select * from laptop where ram = 32 ->SQL
         //HQL
 
-        Query query = session.createQuery("from Laptop where ram = 32", com.telusko.Laptop.class);
-        List<Laptop> laptops = query.getResultList();
+//        Query query = session.createQuery("from Laptop where ram = 32", com.telusko.Laptop.class);
+//        Query query = session.createQuery("from Laptop where ram = :ram", com.telusko.Laptop.class); //if filtering based on an integer use syntax in this way
+//        query.setParameter("ram", 32);
 
-        System.out.println(laptops);
+//        Query query = session.createQuery("from Laptop where brand like ?1", com.telusko.Laptop.class); // brand is String , hence use syntax in this way
+//        query.setParameter(1, "Acer");
+//
+        Query query = session.createQuery("select brand, model from Laptop where brand like ?1", com.telusko.Laptop.class);
+        query.setParameter(1, "Acer");
+        List<Object[]> laptops = query.getResultList();
+
+        for(Object[] data: laptops){
+            System.out.println((String) data[0] + " "+(String) data[1]);
+        }
+
         //Fetching data
 
 //        Student s2 = null;
