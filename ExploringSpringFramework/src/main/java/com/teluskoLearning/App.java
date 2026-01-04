@@ -20,12 +20,8 @@ public class App
         //Note: if we have defined alien class twice in xml bean will be created twice.
         ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
         Alien obj1 = (Alien) context.getBean("alien"); // The name here should match the id that we give in the xml file
-        obj1.age = 21;
         obj1.code();
-        System.out.println(obj1.age);
+        System.out.println(obj1.getAge());
 
-        Alien obj2 = (Alien) context.getBean("alien");
-        obj2.code();
-        System.out.println(obj2.age);
     }
 }

@@ -12,14 +12,23 @@
 <!--When it is prototype, then object will be created only after we get bean with getBean-->
 <!--so based on number of times we create that much bean will be created-->
 
+
+<!--Setter Injection:-->
+
+<!--This is a concept where we set our property value in xml itself. When we set it,-->
+<!--it first calls the setter method in our class and sets our value-->
+
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="alien" class="com.teluskoLearning.Alien" scope="prototype">
+<!--    <bean id="alien" class="com.teluskoLearning.Alien" scope="prototype">-->
 
+    <bean id="alien" class="com.teluskoLearning.Alien">
+        <property name="age" value="21"></property>
     </bean>
 </beans>
 
