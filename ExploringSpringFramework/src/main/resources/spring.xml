@@ -1,0 +1,15 @@
+<!--We can get this beans config from spring 6 documentation-->
+<!--inside beans create bean with id and class name of the class that you want-->
+<!--spring to create a bean-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+    <bean id="alien" class="com.teluskoLearning.Alien">
+
+    </bean>
+</beans>
+
