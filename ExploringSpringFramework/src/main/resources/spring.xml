@@ -26,6 +26,17 @@
 <!--attribute of our Alien class. In this way both the class are wired and Laptop object-->
 <!--is created and can be used in our Alien class-->
 
+
+<!--Constructor Argument:-->
+
+<!--This concept is when you want spring to set values in parameterized constructor-->
+<!--we can use this <constructor-arg> , Ususally it will set based on sequence, so if first-->
+<!--argument is age , put the sequence of age in first. Other way is you can mention -->
+<!--index for them starting from 0-->
+
+<!--If you want to have mandatory values use Constructor injection else go for -->
+<!--setter injections-->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
@@ -35,8 +46,14 @@
 <!--    <bean id="alien" class="com.teluskoLearning.Alien" scope="prototype">-->
 
     <bean id="alien" class="com.teluskoLearning.Alien">
-        <property name="age" value="21"></property>
-        <property name="lap" ref="lap1"></property>
+<!--        <property name="age" value="21"></property>-->
+<!--        <property name="lap" ref="lap1"></property>-->
+<!--        <constructor-arg type="int" value="21" />-->
+<!--        <constructor-arg type="com.teluskoLearning.Laptop" ref="lap1" />-->
+
+        <constructor-arg index="1" ref="lap1" />
+        <constructor-arg index="0" value="21" />
+
     </bean>
 
     <bean id="lap1" class="com.teluskoLearning.Laptop">
