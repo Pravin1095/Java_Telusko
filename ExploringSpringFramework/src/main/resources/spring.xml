@@ -2,13 +2,23 @@
 <!--inside beans create bean with id and class name of the class that you want-->
 <!--spring to create a bean-->
 
+<!--Scope:-->
+
+<!--This is an important concept. We have two types of scopes Singleton and Prototype.-->
+<!--If you want spring to create only one object for your class, use Singleton. -->
+<!--If you want more than one use Prototype. By default it is singleton, so if you-->
+<!--do not mention any it will be singleton. -->
+
+<!--When it is prototype, then object will be created only after we get bean with getBean-->
+<!--so based on number of times we create that much bean will be created-->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- bean definitions here -->
-    <bean id="alien" class="com.teluskoLearning.Alien">
+    <bean id="alien" class="com.teluskoLearning.Alien" scope="prototype">
 
     </bean>
 </beans>
