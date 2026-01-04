@@ -19,6 +19,13 @@
 <!--it first calls the setter method in our class and sets our value-->
 
 
+<!--Ref Attribute:-->
+
+<!--Let's say we need to handle non primitive data in our class like in our case-->
+<!--Laptop Object. We first create a bean for it in xml and we pass its id to our ref-->
+<!--attribute of our Alien class. In this way both the class are wired and Laptop object-->
+<!--is created and can be used in our Alien class-->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
@@ -29,6 +36,10 @@
 
     <bean id="alien" class="com.teluskoLearning.Alien">
         <property name="age" value="21"></property>
+        <property name="lap" ref="lap1"></property>
+    </bean>
+
+    <bean id="lap1" class="com.teluskoLearning.Laptop">
     </bean>
 </beans>
 
