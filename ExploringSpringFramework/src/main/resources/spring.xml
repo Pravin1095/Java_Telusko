@@ -37,6 +37,14 @@
 <!--If you want to have mandatory values use Constructor injection else go for -->
 <!--setter injections-->
 
+<!--Autowire:-->
+
+<!--Autowire is concept used to wire an object to a class when there are multiple objects-->
+<!--defined. We can autowire either byName or byType. When we set autowire to "byName"-->
+<!--Spring looks for bean that is defined with the name that is defined in Alien class,-->
+<!--in our case computer, if it matches then it prints that. If we explicitly mention-->
+<!--property with setter injection, setter injection precedes over autowire.-->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
@@ -45,18 +53,21 @@
     <!-- bean definitions here -->
 <!--    <bean id="alien" class="com.teluskoLearning.Alien" scope="prototype">-->
 
-    <bean id="alien" class="com.teluskoLearning.Alien">
-<!--        <property name="age" value="21"></property>-->
-<!--        <property name="lap" ref="lap1"></property>-->
-<!--        <constructor-arg type="int" value="21" />-->
+    <bean id="alien" class="com.teluskoLearning.Alien" autowire="byName">
+        <property name="age" value="21" />
+<!--<property name="computer" ref="computer1" /> &lt;!&ndash;name should be equivalent to the one defined in class&ndash;&gt;-->
+
+        <!--        <constructor-arg type="int" value="21" />-->
 <!--        <constructor-arg type="com.teluskoLearning.Laptop" ref="lap1" />-->
 
-        <constructor-arg index="1" ref="lap1" />
-        <constructor-arg index="0" value="21" />
+<!--        <constructor-arg index="1" ref="lap1" />-->
+<!--        <constructor-arg index="0" value="21" />-->
 
     </bean>
 
-    <bean id="lap1" class="com.teluskoLearning.Laptop">
+    <bean id="computer1" class="com.teluskoLearning.Laptop">
+    </bean>
+    <bean id="computer" class="com.teluskoLearning.Desktop">
     </bean>
 </beans>
 
