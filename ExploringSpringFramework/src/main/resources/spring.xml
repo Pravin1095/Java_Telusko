@@ -65,6 +65,12 @@
 <!--With this we can improve the performance of our application drastically.-->
 
 
+<!--Inner bean:-->
+
+<!--Let say we want a bean to be used only by one of our beans, in our case lets say-->
+<!--we want our Laptop bean to be used only by our Alien bean and not by any other bean-->
+<!--then insert the bean inside the property tag if alien bean-->
+
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
@@ -75,7 +81,13 @@
 
     <bean id="alien" class="com.teluskoLearning.Alien" autowire="byType">
         <property name="age" value="21" />
-<property name="computer" ref="computer" /> <!--name should be equivalent to the one defined in class-->
+        <property name="computer">
+            <bean id="computer" class="com.teluskoLearning.Laptop" primary="true">
+            </bean>
+        </property>
+
+<!--        <property name="age" value="21" />-->
+<!--<property name="computer" ref="computer" /> &lt;!&ndash;name should be equivalent to the one defined in class&ndash;&gt;-->
 
         <!--        <constructor-arg type="int" value="21" />-->
 <!--        <constructor-arg type="com.teluskoLearning.Laptop" ref="lap1" />-->
@@ -85,9 +97,9 @@
 
     </bean>
 
-    <bean id="computer1" class="com.teluskoLearning.Laptop" primary="true">
-    </bean>
-    <bean id="computer" class="com.teluskoLearning.Desktop" lazy-init="true">
-    </bean>
+<!--    <bean id="computer1" class="com.teluskoLearning.Laptop" primary="true">-->
+<!--    </bean>-->
+<!--    <bean id="computer" class="com.teluskoLearning.Desktop" lazy-init="true">-->
+<!--    </bean>-->
 </beans>
 

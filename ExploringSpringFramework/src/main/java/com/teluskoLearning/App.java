@@ -23,8 +23,8 @@ public class App
         obj1.code();
         System.out.println(obj1.getAge());
 
-        Computer com = context.getBean(Computer.class);
-        Desktop desk = context.getBean(Desktop.class);
+//        Computer com = context.getBean(Computer.class);
+//        Desktop desk = context.getBean(Desktop.class);
 
     }
 }
