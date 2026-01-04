@@ -6,15 +6,15 @@ public class Alien {
         System.out.println("Object created");
     }
 
-    public Alien(int age, Laptop lap){
+    public Alien(int age, Computer computer){
         System.out.println("Para constructor called");
         this.age = age;
-        this.lap = lap;
+        this.computer = computer;
     }
     private int age;
-    private Laptop lap;
+    private Computer computer;
     public void code(){
-        lap.compile();
+        computer.compile();
         System.out.println("Coding..");
     }
 
@@ -27,11 +27,11 @@ public class Alien {
         this.age = age;
     }
 
-    public Laptop getLap() {
-        return lap;
+    public Computer getComputer() {
+        return computer;
     }
 
-    public void setLap(Laptop lap) {
-        this.lap = lap;
+    public void setComputer(Computer computer) {
+        this.computer = computer;
     }
 }

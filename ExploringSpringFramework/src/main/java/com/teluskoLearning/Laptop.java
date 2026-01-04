@@ -1,8 +1,9 @@
 package com.teluskoLearning;
 
-public class Laptop {
+public class Laptop implements Computer {
 
+    @Override
     public void compile(){
-        System.out.println("Compiling...");
+        System.out.println("Compiling using Laptop");
     }
 }
