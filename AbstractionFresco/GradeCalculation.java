@@ -76,5 +76,7 @@ public class GradeCalculation {
         Student obj2 = new SelfFinance("100,5 100,5 100,3|1,100,5");
 
         System.out.println(obj1.calculateGrades());
+
+
     }
 }
