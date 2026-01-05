@@ -5,10 +5,7 @@ import com.teluskoLearning.Computer;
 import com.teluskoLearning.Desktop;
 import com.teluskoLearning.Laptop;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 
 
 //This is the configuration file and we need to add @Configuration on top of
@@ -30,27 +27,35 @@ import org.springframework.context.annotation.Scope;
 //Now if we have two objects of Computer object spring will throw error.To fix
 //this we need to use either @Qualifier or set a bean to Primary using @Primary
 
+
+//Component Stereotype Annotation:
+//So, we are generally doing lot of stuffs in Java configuration or XML config,
+//what if we can do all this in single annotation called @Component.
+//With this component spring will start creating beans for the classes that have
+//this annotation. But still we need to mention @ComponetScan annotation in Java
+//config file and mention our directory that has all these classes
 @Configuration
+@ComponentScan("com.teluskoLearning")
 public class AppConfig {
 
-    @Bean
-//    public Alien alien(@Qualifier("desk1") Computer com){
-        public Alien alien(Computer com){
-        Alien obj = new Alien();
-        obj.setAge(21);
-        obj.setComputer(com);
-        return obj;
-    }
-//    @Bean(name="desk1")
-    @Bean(name={"Beast", "com2", "desk1"})
-    @Scope("prototype")
-    public Desktop desktop(){
-        return new Desktop();
-    }
-
-    @Bean
-    @Primary
-    public Laptop laptop(){
-        return new Laptop();
-    }
+//    @Bean
+////    public Alien alien(@Qualifier("desk1") Computer com){
+//        public Alien alien(Computer com){
+//        Alien obj = new Alien();
+//        obj.setAge(21);
+//        obj.setComputer(com);
+//        return obj;
+//    }
+////    @Bean(name="desk1")
+//    @Bean(name={"Beast", "com2", "desk1"})
+//    @Scope("prototype")
+//    public Desktop desktop(){
+//        return new Desktop();
+//    }
+//
+//    @Bean
+//    @Primary
+//    public Laptop laptop(){
+//        return new Laptop();
+//    }
 }

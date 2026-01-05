@@ -1,5 +1,9 @@
 package com.teluskoLearning;
 
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class Alien {
 
     public Alien(){
