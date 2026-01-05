@@ -1,4 +1,4 @@
-package com.teluskoLearning.demo;
+package com.teluskoLearning.demo.model;
 
 import org.springframework.stereotype.Component;
 

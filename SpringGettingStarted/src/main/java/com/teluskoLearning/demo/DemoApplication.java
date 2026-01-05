@@ -1,5 +1,8 @@
 package com.teluskoLearning.demo;
 
+import com.teluskoLearning.demo.model.Alien;
+import com.teluskoLearning.demo.model.Laptop;
+import com.teluskoLearning.demo.service.LaptopService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -21,6 +24,10 @@ public class DemoApplication {
 		Alien obj = context.getBean(Alien.class);
 		obj.code();
 		System.out.println(obj.getAge());
+
+		Laptop lap = context.getBean(Laptop.class);
+		LaptopService service = context.getBean(LaptopService.class);
+		service.addLaptop(lap);
 	}
 
 }
