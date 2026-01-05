@@ -34,6 +34,12 @@ import org.springframework.context.annotation.*;
 //With this component spring will start creating beans for the classes that have
 //this annotation. But still we need to mention @ComponetScan annotation in Java
 //config file and mention our directory that has all these classes
+
+//Although all beans are created now, there is still issue in connection between
+//two classes, as Alien class is dependent on Computer. So we need to be using
+//@Autowired in setter of computer class and if two objects are found, use Qualifier
+//to fisx that issue
+
 @Configuration
 @ComponentScan("com.teluskoLearning")
 public class AppConfig {

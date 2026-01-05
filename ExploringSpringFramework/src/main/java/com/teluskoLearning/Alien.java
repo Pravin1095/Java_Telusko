@@ -1,6 +1,8 @@
 package com.teluskoLearning;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,6 +18,8 @@ public class Alien {
         this.computer = computer;
     }
     private int age;
+
+
     private Computer computer;
     public void code(){
         computer.compile();
@@ -35,6 +39,8 @@ public class Alien {
         return computer;
     }
 
+    @Autowired
+    @Qualifier("laptop")  //name of bean now is the lowercase of class name
     public void setComputer(Computer computer) {
         this.computer = computer;
     }
