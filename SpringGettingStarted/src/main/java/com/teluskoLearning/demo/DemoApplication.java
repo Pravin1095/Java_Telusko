@@ -20,6 +20,7 @@ public class DemoApplication {
 		ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 		Alien obj = context.getBean(Alien.class);
 		obj.code();
+		System.out.println(obj.getAge());
 	}
 
 }
