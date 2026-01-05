@@ -3,6 +3,7 @@ package com.teluskoLearning;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,6 +18,8 @@ public class Alien {
         this.age = age;
         this.computer = computer;
     }
+
+    @Value("21")  //With this we can inject the value instead of hardcoding it
     private int age;
 
 
