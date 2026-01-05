@@ -3,6 +3,7 @@ package com.teluskoLearning.config;
 import com.teluskoLearning.Desktop;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 
 //This is the configuration file and we need to add @Configuration on top of
@@ -14,11 +15,13 @@ import org.springframework.context.annotation.Configuration;
 //If we want name to be assigned we can do that using name property
 //We can either give one name or multiple name to our bean
 
+//Scope: We can make a bean singleton or prototype using Scope annotation
 @Configuration
 public class AppConfig {
 
 //    @Bean(name="desk1")
     @Bean(name={"Beast", "com2", "desk1"})
+    @Scope("prototype")
     public Desktop desktop(){
         return new Desktop();
     }
