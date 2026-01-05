@@ -38,7 +38,13 @@ import org.springframework.context.annotation.*;
 //Although all beans are created now, there is still issue in connection between
 //two classes, as Alien class is dependent on Computer. So we need to be using
 //@Autowired in setter of computer class and if two objects are found, use Qualifier
-//to fisx that issue
+//to fix that issue
+
+//Primary Annotation
+//We can mention Primary for one of our Computer objects and spring will take
+//it as prior to other. But if we have Qualifier and Primary, Qualifier will
+//take the precedence
+
 
 @Configuration
 @ComponentScan("com.teluskoLearning")
