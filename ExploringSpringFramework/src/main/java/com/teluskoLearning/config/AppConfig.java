@@ -1,5 +1,7 @@
 package com.teluskoLearning.config;
 
+import com.teluskoLearning.Alien;
+import com.teluskoLearning.Computer;
 import com.teluskoLearning.Desktop;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,9 +18,22 @@ import org.springframework.context.annotation.Scope;
 //We can either give one name or multiple name to our bean
 
 //Scope: We can make a bean singleton or prototype using Scope annotation
+
+//Autowire: Now let's wire the connection between Alien and Computer class
+//Similar to XML we set the properties value in this file and we have Computer
+//as param in Alien class, so with this, Spring will autowire the available
+//Computer object in this file and maps it to the Computer.
+
 @Configuration
 public class AppConfig {
 
+    @Bean
+    public Alien alien(Computer com){
+        Alien obj = new Alien();
+        obj.setAge(21);
+        obj.setComputer(com);
+        return obj;
+    }
 //    @Bean(name="desk1")
     @Bean(name={"Beast", "com2", "desk1"})
     @Scope("prototype")

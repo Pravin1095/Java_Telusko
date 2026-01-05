@@ -19,8 +19,11 @@ ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.cl
 Desktop dt = context.getBean("Beast",Desktop.class);
 dt.compile();
 
-Desktop dt1 = context.getBean("Beast",Desktop.class);
-dt1.compile();
+Alien a = context.getBean("alien", Alien.class);
+        a.code();
+
+//Desktop dt1 = context.getBean("Beast",Desktop.class);
+//dt1.compile();
 
 
 
