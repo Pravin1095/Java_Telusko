@@ -3,8 +3,11 @@ package com.teluskoLearning.config;
 import com.teluskoLearning.Alien;
 import com.teluskoLearning.Computer;
 import com.teluskoLearning.Desktop;
+import com.teluskoLearning.Laptop;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Scope;
 
 
@@ -24,11 +27,15 @@ import org.springframework.context.annotation.Scope;
 //as param in Alien class, so with this, Spring will autowire the available
 //Computer object in this file and maps it to the Computer.
 
+//Now if we have two objects of Computer object spring will throw error.To fix
+//this we need to use either @Qualifier or set a bean to Primary using @Primary
+
 @Configuration
 public class AppConfig {
 
     @Bean
-    public Alien alien(Computer com){
+//    public Alien alien(@Qualifier("desk1") Computer com){
+        public Alien alien(Computer com){
         Alien obj = new Alien();
         obj.setAge(21);
         obj.setComputer(com);
@@ -39,5 +46,11 @@ public class AppConfig {
     @Scope("prototype")
     public Desktop desktop(){
         return new Desktop();
+    }
+
+    @Bean
+    @Primary
+    public Laptop laptop(){
+        return new Laptop();
     }
 }
