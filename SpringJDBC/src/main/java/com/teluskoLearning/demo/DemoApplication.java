@@ -15,9 +15,9 @@ public class DemoApplication {
 		ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
 		Student s = context.getBean(Student.class);
 
-		s.setRollNo(4);
-		s.setName("Hikaru");
-		s.setMarks(80);
+		s.setRollNo(5);
+		s.setName("Fabiano");
+		s.setMarks(99);
 
 		StudentService service = context.getBean(StudentService.class);
 
