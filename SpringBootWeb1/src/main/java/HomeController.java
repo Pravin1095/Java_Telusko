@@ -1,3 +1,4 @@
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //To av=chieve it we need to download a dependency tomcat jasper from mvn. Use same
 //version as you Tomcat. Our case 11.0.15
 
+//The mapping of requests happens internally with the help of DispatcherServlet
+
 @Controller
 public class HomeController{
 
@@ -18,5 +21,14 @@ public class HomeController{
     public String home(){
         System.out.println("Home method  called");
         return "index.jsp";
+    }
+
+    @RequestMapping("add")
+    public String result(HttpServletRequest req){
+        int num1 = Integer.parseInt(req.getParameter("num1"));
+        int num2 = Integer.parseInt(req.getParameter("num2"));
+        int result = num1 + num2;
+        System.out.println("res "+result);
+        return "result.jsp";
     }
 }
