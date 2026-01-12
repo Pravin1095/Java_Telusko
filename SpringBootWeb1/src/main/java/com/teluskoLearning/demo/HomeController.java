@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 //This controller annotation makes this a servlet and this class gets called
 //once client request starts
@@ -45,11 +46,12 @@ public class HomeController{
     // Using Request mapping to get the inputs directly as a query rather than req body
 
     @RequestMapping("add")
-    public String result(@RequestParam("num1") int num1, @RequestParam("num2") int num2, Model model){
+    public ModelAndView result(@RequestParam("num1") int num1, @RequestParam("num2") int num2, ModelAndView mv){
         System.out.println("res");
         int result = num1 + num2;
-        model.addAttribute("result", result);
+        mv.addObject("result", result);
+        mv.setViewName("result");  //Setting the view name (jsp file in our case)
 
-        return "result";
+        return mv;
     }
 }
