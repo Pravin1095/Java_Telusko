@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController{
+
+    @ModelAttribute("course")
+    public String courseName(){
+        return "Java";
+    }
 
     @RequestMapping("/")
     public String home(){
@@ -55,17 +61,14 @@ public class HomeController{
         return mv;
     }
 
+
+    // Model Attribute sets the incoming data to the Alien class and also sends the data to our jsp file.
+    //It is optional to provide ModalAttribute as it is defaulty taken care by Spring . We can set
+    //ModelAttribute if we want to set name for our object and use it in jsp file. In our case I've
+    //name alien1 and used that name in jsp
     @RequestMapping("addAlien")
-    public ModelAndView addAlien(@RequestParam("aid") int aid, @RequestParam("aname") String aname, ModelAndView mv){
-        System.out.println("addAlien");
-        Alien alien = new Alien();
-        alien.setAid(aid);
-        alien.setAname(aname);
-
-        mv.addObject("alien", alien);
-        mv.setViewName("result");  //Setting the view name (jsp file in our case)
-
-        return mv;
+    public String addAlien(@ModelAttribute("alien1") Alien alien){
+        return "result";
     }
 
 
