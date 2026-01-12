@@ -1,4 +1,7 @@
+package com.teluskoLearning.demo;
+
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -14,21 +17,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 //The mapping of requests happens internally with the help of DispatcherServlet
 
+//use session to set the value that you want to show in the screen, In result.jsp
+//wrap java variable or code inside <%= session.getAttribute("result")%> or ${result} and get the value with session.getAttribute
+
 @Controller
 public class HomeController{
 
     @RequestMapping("/")
     public String home(){
         System.out.println("Home method  called");
-        return "index.jsp";
+        return "index";
     }
 
     @RequestMapping("add")
-    public String result(HttpServletRequest req){
+    public String result(HttpServletRequest req, HttpSession session){
+        System.out.println("res");
         int num1 = Integer.parseInt(req.getParameter("num1"));
         int num2 = Integer.parseInt(req.getParameter("num2"));
         int result = num1 + num2;
-        System.out.println("res "+result);
-        return "result.jsp";
+        session.setAttribute("result", result);
+
+        return "result";
     }
 }
