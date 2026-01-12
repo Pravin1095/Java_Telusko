@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 //This controller annotation makes this a servlet and this class gets called
 //once client request starts
@@ -29,11 +30,22 @@ public class HomeController{
         return "index";
     }
 
+//    @RequestMapping("add")
+//    public String result(HttpServletRequest req, HttpSession session){
+//        System.out.println("res");
+//        int num1 = Integer.parseInt(req.getParameter("num1"));
+//        int num2 = Integer.parseInt(req.getParameter("num2"));
+//        int result = num1 + num2;
+//        session.setAttribute("result", result);
+//
+//        return "result";
+//    }
+
+    // Using Request mapping to get the inputs directly as a query rather than req body
+
     @RequestMapping("add")
-    public String result(HttpServletRequest req, HttpSession session){
+    public String result(@RequestParam("num1") int num1, @RequestParam("num2") int num2, HttpSession session){
         System.out.println("res");
-        int num1 = Integer.parseInt(req.getParameter("num1"));
-        int num2 = Integer.parseInt(req.getParameter("num2"));
         int result = num1 + num2;
         session.setAttribute("result", result);
 
