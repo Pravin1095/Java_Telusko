@@ -54,4 +54,19 @@ public class HomeController{
 
         return mv;
     }
+
+    @RequestMapping("addAlien")
+    public ModelAndView addAlien(@RequestParam("aid") int aid, @RequestParam("aname") String aname, ModelAndView mv){
+        System.out.println("addAlien");
+        Alien alien = new Alien();
+        alien.setAid(aid);
+        alien.setAname(aname);
+
+        mv.addObject("alien", alien);
+        mv.setViewName("result");  //Setting the view name (jsp file in our case)
+
+        return mv;
+    }
+
+
 }
