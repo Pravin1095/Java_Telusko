@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+//With Lombok we no need to write getters and setters for every data, The Data
+//annotation creates implicitly and with NoArgs and AllArgs we no need to write
+//constructor explicitly. It will be handled by Lombok
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
