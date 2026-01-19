@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="com.teluskoLearning.demo.model.JobPost" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,12 +39,15 @@
     </div>
 </nav>
 
+<%
+    JobPost jobPost = (JobPost) request.getAttribute("jobPost");
+%>
 
 <div class="container mt-5">
     <h2 class="mb-4 text-center font-weight-bold">Job Post List</h2>
 
     <div class="row row-cols-2">
-        <c:forEach var="jobPost" items="${jobPosts}">
+        <c:forEach var="jobPost" items="${jobPost}">
 
             <div class="col mb-4">
                 <div class="card border-dark bg-dark text-white">
