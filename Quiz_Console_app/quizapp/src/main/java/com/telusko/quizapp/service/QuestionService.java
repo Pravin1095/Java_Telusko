@@ -18,4 +18,12 @@ public class QuestionService {
        return questionRepo.findAll();
     }
 
+    public List<Question> getQuestionsByCategory(String category) {
+return questionRepo.findByCategory(category);
+    }
+
+    public String addQuestion(Question question) {
+        questionRepo.save(question);
+        return "success";
+    }
 }
