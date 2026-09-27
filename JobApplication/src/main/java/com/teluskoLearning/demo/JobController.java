@@ -33,6 +33,11 @@ public class JobController {
         return "success";
     }
 
+    @GetMapping("jobPosts")
+    public List<JobPost> getJobs(){
+        return service.getAllJobs();
+    }
+
     @GetMapping("viewalljobs")
     public String viewJobs(Model m){
         List<JobPost> jobs = service.getAllJobs();

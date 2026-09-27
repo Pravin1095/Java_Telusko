@@ -16,7 +16,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) {
         http.csrf(customizer ->customizer.disable());
-        http.authorizeHttpRequests(request->request.anyRequest().authenticated());
+        http.authorizeHttpRequests(request->request.anyRequest().authenticated()); //Make sures that every incoming request is now authenticated
         http.httpBasic(Customizer.withDefaults());
         http.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         return http.build();
