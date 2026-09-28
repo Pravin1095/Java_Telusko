@@ -1,0 +1,35 @@
+Primary key Id:
+
+Sometimes when we set @Generated to IDENTITY it may not work as expected as the database won't be generating the ID sequentially as it may be out pf sync with previously created data.
+Hence make the database sync with the SQL query SELECT setval(
+                                                    pg_get_serial_sequence('question', 'id'),
+                                                    COALESCE(MAX(id), 1)
+                                                )
+                                                FROM question;
+ This query resets the internal auto-increment counter (sequence) for the question table so that the next generated ID starts after the highest existing ID in the table.
+
+ 1. pg_get_serial_sequence('question', 'id')
+ What it does: Dynamically looks up the exact name of the sequence generator attached to the id column of the question table.
+
+ Why it's needed: In PostgreSQL, identity and serial columns don't store the sequence counter directly in the column; they link to an underlying sequence object (often auto-named something like question_id_seq). Using this function avoids having to find or hardcode that auto-generated sequence name.
+
+ 2. MAX(id)
+ What it does: Scans the question table and finds the largest primary key value currently present.
+
+ Example: If you already manually inserted rows with IDs 1, 2, and 15, MAX(id) evaluates to 15.
+
+ 3. COALESCE(MAX(id), 1)
+ What it does: Returns the first non-null argument in the list.
+
+ Why it's needed: If the table is completely empty, MAX(id) returns NULL. setval() cannot accept NULL as a value. COALESCE provides a safe fallback:
+
+ If rows exist: returns MAX(id) (e.g., 15).
+
+ If the table is empty: returns 1.
+
+ 4. setval(sequence_name, target_value)
+ What it does: Sets the current value of the sequence to target_value.
+
+ Default behavior: By default, setval marks the provided value as "already used" (is_called = true).
+
+ The outcome: The very next time PostgreSQL generates an ID (via nextval()), it increments this value by 1. For instance, if MAX(id) was 15, the next record inserted by Spring Boot will automatically receive ID 16, preventing primary key collision errors.
