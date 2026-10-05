@@ -3,6 +3,7 @@ package com.telusko.quizapp.service;
 import com.telusko.quizapp.model.Question;
 import com.telusko.quizapp.model.QuestionWrapper;
 import com.telusko.quizapp.model.Quiz;
+import com.telusko.quizapp.model.Response;
 import com.telusko.quizapp.repository.QuestionRepository;
 import com.telusko.quizapp.repository.QuizRepositoroy;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,5 +43,20 @@ public class QuizService {
             questionForUser.add(qw);
         }
         return new ResponseEntity<>(questionForUser, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Integer> calculateScore(Integer id, List<Response> response) {
+        Quiz quiz = quizRepo.findById(id).get();
+        List<Question> questions = quiz.getQuestions();
+        int right = 0;
+        int i=0;
+        for(Response r : response ){
+            if(r.getResponse().equals(questions.get(i).getRightAnswer())){
+                right++;
+            }
+            i++;
+
+        }
+        return  new ResponseEntity<>(right,HttpStatus.OK);
     }
 }
